@@ -1,6 +1,6 @@
-from bs4 import BeautifulSoup   # Preluare web
-import requests                 # Request la web
-import pandas as pd             # Formatare si CSV
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd
 
 r = requests.get("https://bnr.ro/Cursul-de-schimb--7372.aspx")
 # prin(r.text)
