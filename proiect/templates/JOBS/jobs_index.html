@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a href="{% url 'jobs:adauga' %}" class="btn btn-success">Adauga job</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Tip</th>
+                <th>Website</th>
+                <th>Titlu</th>
+                <th>Descriere</th>
+                <th>Aplicare</th>
+                <th>Stare</th>
+                <th>Actiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in jobs_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.url }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.how_to_apply }}</td>
+                    <td>{% if item.activ == 1 %}
+                        <span class="btn btn-success">Activ</span>
+                    {% else %}
+                        <span class="btn btn-danger">Inactiv</span>
+                    {% endif %}
+                    </td>
+                    <td>
+                        {% if item.activ == 0 %}
+                        <a href="{% url 'jobs:activeaza' item.id %}" class="btn btn-success">Activeaza</a>
+                        <a href="{% url 'jobs:modifica' item.id %}" class="btn btn-info">Modifica</a>
+                        {% else %}
+                        <a href="{% url 'jobs:sterge' item.id %}" class="btn btn-danger">Sterge</a>
+                        <a href="{% url 'jobs:modifica' item.id %}" class="btn btn-info">Modifica</a>
+                        {% endif  %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
