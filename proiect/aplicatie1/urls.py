@@ -8,5 +8,5 @@ urlpatterns = [
     path('adaugare/', views.CreateLocationView.as_view(), name='adauga'),
     path('<int:pk>/update/', views.UpdateLocationView.as_view(), name='modifica'),
     path('<int:pk>/stergere/', views.delete_location, name='sterge'),
-path('<int:pk>/activeaza/', views.activate_location, name='activeaza'),
+    path('<int:pk>/activeaza/', views.activate_location, name='activeaza'),
 ]
